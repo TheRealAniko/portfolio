@@ -60,7 +60,7 @@ html {
   .underlined {
     text-decoration: underline;
     text-decoration-color: #3A6B68;
-    text-decoration-thickness: 8px;
+    text-decoration-thickness: 4px;
     text-underline-offset: 4px;
   }
 }

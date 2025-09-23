@@ -15,7 +15,7 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle, ctaText, onCtaClick }) => 
         <p className="text-lg sm:text-xl md:text-2xl mb-8 leading-relaxed">
           {subtitle}
         </p>
-        <h1 className="text-6xl lg:text-8xl font-bold text-gray-900 mb-16 leading-tights">
+        <h1 className="text-4xl lg:text-8xl font-bold text-gray-900 mb-16 leading-tights">
           {title}
         </h1>
         <Button
