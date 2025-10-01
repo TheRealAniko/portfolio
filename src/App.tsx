@@ -19,8 +19,8 @@ function App() {
       {/* Hero Section */}
       <section id="home">
         <Hero
-          subtitle="Developerin & Consultant für digitale Lösungen mit Wirkung."
-          title={<>Ich verbinde <span className="underlined ">Web-Entwicklung</span>, <span className="underlined">visuelles Design</span> und <span className="underlined">KI-gestützte Workflows</span> zu klaren Erlebnissen.</>}
+          subtitle="Sichtbar werden. Zeit sparen. Wachsen."
+          title={<>Ich entwickle <span className="underlined ">Websites</span> und <span className="underlined">Automatisierungen</span> für Sichtbarkeit und Effizienz. Klar im Design.</>}
           ctaText="Projekte ansehen"
           onCtaClick={handleHeroCtaClick}
         />
