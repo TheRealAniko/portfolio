@@ -69,10 +69,19 @@
           "@type": "ProfessionalService",
           "@id": "https://aniko.dev/#services",
           "name": "Digitale Leistungen von Aniko Juhász",
-          "provider": { "@id": "https://aniko.dev/#person" },
-          "areaServed": "DE",
-          "availableLanguage": ["de"],
           "url": "https://aniko.dev/",
+          "areaServed": "DE",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Deutschland"
+          },
+          "brand": {
+            "@type": "Person",
+            "@id": "https://aniko.dev/#person",
+            "name": "Aniko Juhász",
+            "jobTitle": "Webentwicklerin & Consultant",
+            "url": "https://aniko.dev/"
+          },
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Leistungen",
@@ -115,7 +124,7 @@
               }
             ]
           }
-        }
+        }        
       ]
     }
     </script>
