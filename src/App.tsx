@@ -14,6 +14,10 @@ function App() {
     scrollTo('leistungen');
   };
 
+  const handleLeistungenCtaClick = () => {
+    scrollTo('lets-talk');
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -28,7 +32,10 @@ function App() {
 
       {/* Leistungen Section */}
       <section id="leistungen">
-        <Leistungen leistungenItems={leistungenData} />
+        <Leistungen 
+          leistungenItems={leistungenData} 
+          onCtaClick={handleLeistungenCtaClick}
+        />
       </section>
 
       {/* Work Section */}

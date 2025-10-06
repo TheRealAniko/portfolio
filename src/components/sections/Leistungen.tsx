@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../ui/Card';
+import Button from '../ui/Button';
 
 interface LeistungenItem {
   id: number;
@@ -11,9 +12,10 @@ interface LeistungenItem {
 
 interface LeistungenProps {
   leistungenItems: LeistungenItem[];
+  onCtaClick?: () => void;
 }
 
-const Leistungen: React.FC<LeistungenProps> = ({ leistungenItems }) => {
+const Leistungen: React.FC<LeistungenProps> = ({ leistungenItems, onCtaClick }) => {
   return (
     <section className="py-20 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,7 +28,7 @@ const Leistungen: React.FC<LeistungenProps> = ({ leistungenItems }) => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-16">
           {leistungenItems.map((item) => (
             <Card key={item.id} >
               <div className="">
@@ -48,7 +50,25 @@ const Leistungen: React.FC<LeistungenProps> = ({ leistungenItems }) => {
             </Card>
           ))}
         </div>
-      </div>
+                {/* CTA Section */}
+               
+          
+            <div className="flex flex-row items-center justify-left gap-4 sm:gap-6">
+              <h3 className="text-xl">
+                Interesse geweckt?
+              </h3>
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={onCtaClick}
+              >
+                Let's Talk
+              </Button>
+            </div>
+        
+        </div>
+
+    
     </section>
   );
 };
