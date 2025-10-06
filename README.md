@@ -20,29 +20,6 @@ A modern, responsive portfolio website showcasing web development and consulting
 - **Icons** - Lucide React
 - **Build Tool** - Vite
 
-## 🚀 Getting Started
-
-### Installation
-
-1. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-2. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-3. **Open your browser**
-   Navigate to `http://localhost:5173`
-
-### Build for Production
-
-```bash
-npm run build
-```
-
 ## 📊 SEO Features
 
 - ✅ Meta tags and descriptions
