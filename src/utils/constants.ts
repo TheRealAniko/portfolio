@@ -1,6 +1,6 @@
 // Navigation
 export const NAV_ITEMS = [
-  { id: 'expertise', label: 'Expertise', href: '#expertise' },
+  { id: 'leistungen', label: 'Leistungen', href: '#leistungen' },
   { id: 'work', label: 'Work', href: '#work' },
   { id: 'lets-talk', label: "Let's Talk", href: '#lets-talk' },
 ];

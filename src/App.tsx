@@ -1,9 +1,9 @@
 import Layout from './components/layout/Layout';
 import Hero from './components/sections/Hero';
-import Expertise from './components/sections/Expertise';
+import Leistungen from './components/sections/Leistungen';
 import Work from './components/sections/Work';
 import LetsTalk from './components/sections/LetsTalk';
-import { expertiseData } from './data/expertise';
+import { leistungenData } from './data/leistungen';
 import { workData } from './data/work';
 import { useScrollTo } from './hooks/useScrollTo';
 
@@ -11,7 +11,7 @@ function App() {
   const scrollTo = useScrollTo();
 
   const handleHeroCtaClick = () => {
-    scrollTo('work');
+    scrollTo('leistungen');
   };
 
   return (
@@ -21,14 +21,14 @@ function App() {
         <Hero
           subtitle="Sichtbar werden. Zeit sparen. Wachsen."
           title={<>Ich entwickle <span className="underlined ">Websites</span> und <span className="underlined">Automatisierungen</span> für Sichtbarkeit und Effizienz. Klar im Design.</>}
-          ctaText="Projekte ansehen"
+          ctaText="Leistungen ansehen"
           onCtaClick={handleHeroCtaClick}
         />
       </section>
 
-      {/* Expertise Section */}
-      <section id="expertise">
-        <Expertise expertiseItems={expertiseData} />
+      {/* Leistungen Section */}
+      <section id="leistungen">
+        <Leistungen leistungenItems={leistungenData} />
       </section>
 
       {/* Work Section */}
