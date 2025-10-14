@@ -5,25 +5,28 @@ export const NAV_ITEMS = [
   { id: 'lets-talk', label: "Let's Talk", href: '#lets-talk' },
 ];
 
+// Legal Pages
+export const LEGAL_ITEMS = [
+  { id: 'impressum', label: 'Impressum' },
+  { id: 'datenschutz', label: 'Datenschutz' },
+];
+
 // Contact Information
 export const CONTACT_INFO = {
-  email: 'info@ihre-domain.de',
+  email: 'hello@aniko.dev',
   phone: '+49 123 456789',
   address: 'Musterstraße 123, 12345 Musterstadt',
 };
 
 // Social Media Links
 export const SOCIAL_LINKS = {
-  facebook: 'https://facebook.com/ihre-seite',
-  twitter: 'https://twitter.com/ihre-seite',
-  linkedin: 'https://linkedin.com/company/ihre-firma',
-  instagram: 'https://instagram.com/ihre-seite',
+  linkedin: 'https://www.linkedin.com/in/anikojuhasz/',
+  github: 'https://github.com/TheRealAniko',
 };
 
 // Company Information
 export const COMPANY_INFO = {
-  name: 'Ihre Firma GmbH',
-  description: 'Ihre Beschreibung hier',
-  founded: '2020',
-  employees: '50+',
+  name: 'Aniko Juhasz',
+  description: 'Webentwicklerin & Consultant für digitale Lösungen',
+  founded: '2024',
 };
