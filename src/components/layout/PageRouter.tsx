@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Hero from '../sections/Hero';
 import Leistungen from '../sections/Leistungen';
 import Work from '../sections/Work';
@@ -7,7 +7,6 @@ import Impressum from '../sections/Impressum';
 import Datenschutz from '../sections/Datenschutz';
 import { leistungenData } from '../../data/leistungen';
 import { workData } from '../../data/work';
-import { useScrollTo } from '../../hooks/useScrollTo';
 
 type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz';
 
@@ -17,12 +16,6 @@ interface PageRouterProps {
 }
 
 const PageRouter: React.FC<PageRouterProps> = ({ currentPage, onPageChange }) => {
-  const scrollTo = useScrollTo();
-
-  const handleHeroCtaClick = () => {
-    onPageChange('work');
-  };
-
   const handleLeistungenCtaClick = () => {
     onPageChange('lets-talk');
   };
@@ -59,34 +52,21 @@ const PageRouter: React.FC<PageRouterProps> = ({ currentPage, onPageChange }) =>
         return <Impressum />;
       case 'datenschutz':
         return <Datenschutz />;
+      case 'leistungen':
+        return <Leistungen leistungenItems={leistungenData} onCtaClick={handleLeistungenCtaClick} />;
+      case 'work':
+        return <Work workItems={workData} />;
+      case 'lets-talk':
+        return <LetsTalk />;
       case 'home':
       default:
         return (
-          <>
-            <section id="home">
-              <Hero
-                subtitle="Sichtbar werden. Zeit sparen. Wachsen."
-                title={<>Ich entwickle <span className="underlined ">Websites</span> und <span className="underlined">Automatisierungen</span> für Sichtbarkeit und Effizienz. Klar im Design.</>}
-                ctaText="Projekte ansehen"
-                onCtaClick={handleHeroCtaClick}
-              />
-            </section>
-
-            <section id="leistungen">
-              <Leistungen 
-                leistungenItems={leistungenData} 
-                onCtaClick={handleLeistungenCtaClick}
-              />
-            </section>
-
-            <section id="work">
-              <Work workItems={workData} />
-            </section>
-
-            <section id="lets-talk">
-              <LetsTalk />
-            </section>
-          </>
+          <Hero
+            subtitle="Sichtbar werden. Zeit sparen. Wachsen."
+            title={<>Ich entwickle <span className="underlined ">Websites</span> und <span className="underlined">Automatisierungen</span> für Sichtbarkeit und Effizienz. Klar im Design.</>}
+            ctaText="Leistungen ansehen"
+            onCtaClick={() => onPageChange('leistungen')}
+          />
         );
     }
   };
