@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import { NAV_ITEMS } from '../../utils/constants';
-import { useScrollTo } from '../../hooks/useScrollTo';
 
-const Navigation: React.FC = () => {
+type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz';
+
+interface NavigationProps {
+  currentPage?: Page;
+  onPageChange?: (page: Page) => void;
+}
+
+const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const scrollTo = useScrollTo();
 
-  const handleNavClick = (href: string) => {
-    const elementId = href.replace('#', '');
-    scrollTo(elementId);
+  const handleNavClick = (page: Page) => {
+    onPageChange?.(page);
     setIsMobileMenuOpen(false);
+  };
+
+  const handleLogoClick = () => {
+    onPageChange?.('home');
   };
 
   return (
@@ -19,7 +27,7 @@ const Navigation: React.FC = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <button
-              onClick={() => handleNavClick('#home')}
+              onClick={handleLogoClick}
               className={`text-2xl uppercase hover:text-gray-500 tracking-wider transition-colors duration-300`}
             >
               Aniko
@@ -32,8 +40,10 @@ const Navigation: React.FC = () => {
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => handleNavClick(item.href)}
-                  className={`px-3 py-2 uppercase hover:text-gray-500 tracking-wider transition-colors duration-300 `}
+                  onClick={() => handleNavClick(item.id as Page)}
+                  className={`px-3 py-2 uppercase hover:text-gray-500 tracking-wider transition-colors duration-300 ${
+                    currentPage === item.id ? 'text-[var(--color-primary)]' : ''
+                  }`}
                 >
                   {item.label}
                 </button>
@@ -80,8 +90,10 @@ const Navigation: React.FC = () => {
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => handleNavClick(item.href)}
-                  className="block w-full text-left px-3 py-2 rounded-md uppercase hover:text-gray-500 tracking-wider"
+                  onClick={() => handleNavClick(item.id as Page)}
+                  className={`block w-full text-left px-3 py-2 rounded-md uppercase hover:text-gray-500 tracking-wider ${
+                    currentPage === item.id ? 'text-[var(--color-primary)]' : ''
+                  }`}
                 >
                   {item.label}
                 </button>

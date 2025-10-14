@@ -2,18 +2,22 @@ import React from 'react';
 import Navigation from './Navigation';
 import Footer from './Footer';
 
+type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz';
+
 interface LayoutProps {
   children: React.ReactNode;
+  currentPage?: Page;
+  onPageChange?: (page: Page) => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, currentPage, onPageChange }) => {
   return (
     <div className=" min-h-screen flex flex-col">
-      <Navigation />
+      <Navigation currentPage={currentPage} onPageChange={onPageChange} />
       <main className="flex-1">
         {children}
       </main>
-      <Footer />
+      <Footer onPageChange={onPageChange} />
     </div>
   );
 };
