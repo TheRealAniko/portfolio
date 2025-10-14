@@ -12,7 +12,13 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavClick = (page: Page) => {
-    onPageChange?.(page);
+    // Für Impressum und Datenschutz: Seite wechseln
+    if (page === 'impressum' || page === 'datenschutz') {
+      onPageChange?.(page);
+    } else {
+      // Für alle anderen Sektionen: scrollen
+      onPageChange?.(page);
+    }
     setIsMobileMenuOpen(false);
   };
 
