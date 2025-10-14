@@ -17,8 +17,32 @@ interface PageRouterProps {
 
 const PageRouter: React.FC<PageRouterProps> = ({ currentPage, onPageChange }) => {
   const handleLeistungenCtaClick = () => {
-    onPageChange('lets-talk');
+    // Scroll zu lets-talk Sektion
+    const element = document.getElementById('lets-talk');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
+
+  const handleHeroCtaClick = () => {
+    // Scroll zu leistungen Sektion
+    const element = document.getElementById('leistungen');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Scroll zu Sektion basierend auf currentPage
+  useEffect(() => {
+    if (currentPage === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.getElementById(currentPage);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [currentPage]);
 
   // URL-Hash ändern bei Seitenwechsel
   useEffect(() => {
@@ -46,32 +70,40 @@ const PageRouter: React.FC<PageRouterProps> = ({ currentPage, onPageChange }) =>
     }
   }, [onPageChange]);
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'impressum':
-        return <Impressum />;
-      case 'datenschutz':
-        return <Datenschutz />;
-      case 'leistungen':
-        return <Leistungen leistungenItems={leistungenData} onCtaClick={handleLeistungenCtaClick} />;
-      case 'work':
-        return <Work workItems={workData} />;
-      case 'lets-talk':
-        return <LetsTalk />;
-      case 'home':
-      default:
-        return (
-          <Hero
-            subtitle="Sichtbar werden. Zeit sparen. Wachsen."
-            title={<>Ich entwickle <span className="underlined ">Websites</span> und <span className="underlined">Automatisierungen</span> für Sichtbarkeit und Effizienz. Klar im Design.</>}
-            ctaText="Leistungen ansehen"
-            onCtaClick={() => onPageChange('leistungen')}
-          />
-        );
-    }
-  };
+  // Für Impressum und Datenschutz: separate Seiten
+  if (currentPage === 'impressum') {
+    return <Impressum />;
+  }
 
-  return <>{renderPage()}</>;
+  if (currentPage === 'datenschutz') {
+    return <Datenschutz />;
+  }
+
+  // Alle anderen Sektionen auf einer scrollbaren Seite
+  return (
+    <>
+      <section id="home">
+        <Hero
+          subtitle="Sichtbar werden. Zeit sparen. Wachsen."
+          title={<>Ich entwickle <span className="underlined ">Websites</span> und <span className="underlined">Automatisierungen</span> für Sichtbarkeit und Effizienz. Klar im Design.</>}
+          ctaText="Leistungen ansehen"
+          onCtaClick={handleHeroCtaClick}
+        />
+      </section>
+
+      <section id="leistungen">
+        <Leistungen leistungenItems={leistungenData} onCtaClick={handleLeistungenCtaClick} />
+      </section>
+
+      <section id="work">
+        <Work workItems={workData} />
+      </section>
+
+      <section id="lets-talk">
+        <LetsTalk />
+      </section>
+    </>
+  );
 };
 
 export default PageRouter;
