@@ -21,19 +21,21 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           {/* Copyright und Legal Links */}
           <div className="text-left">
-            <p className="text-sm opacity-75 mb-2">
-              © {currentYear} Aniko Juhasz. Alle Rechte vorbehalten.
-            </p>
-            <div className="flex flex-wrap gap-4 text-sm">
-              {LEGAL_ITEMS.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleLegalClick(item.id as Page)}
-                  className="opacity-75 hover:opacity-100 hover:underline transition-opacity duration-200"
-                >
-                  {item.label}
-                </button>
-              ))}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+              <p className="text-sm opacity-75">
+                © {currentYear} Aniko Juhasz. Alle Rechte vorbehalten.
+              </p>
+              <div className="flex flex-wrap gap-4 text-sm">
+                {LEGAL_ITEMS.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleLegalClick(item.id as Page)}
+                    className="opacity-75 hover:opacity-100 hover:underline transition-opacity duration-200"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
           

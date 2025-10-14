@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Button from './Button';
 
 interface CookieBannerProps {
   onAccept?: () => void;
@@ -57,18 +58,20 @@ const CookieBanner: React.FC<CookieBannerProps> = ({ onAccept, onDecline }) => {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-2">
-            <button
+            <Button
+              variant="secondary"
+              size="sm"
               onClick={handleDecline}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 transition-colors duration-200"
             >
               Ablehnen
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="primary"
+              size="sm"
               onClick={handleAccept}
-              className="px-4 py-2 text-sm font-medium text-white bg-[var(--color-primary)] border border-transparent rounded-md hover:bg-opacity-90 transition-colors duration-200"
             >
               Akzeptieren
-            </button>
+            </Button>
           </div>
         </div>
       </div>
