@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import Footer from './Footer';
 
-type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz';
+type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz' | 'agb';
 
 interface LayoutProps {
   children: React.ReactNode;

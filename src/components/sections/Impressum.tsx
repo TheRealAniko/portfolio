@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Impressum: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   return (
-    <section className="py-20">
+    <section className="pt-32 pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 uppercase tracking-wider">

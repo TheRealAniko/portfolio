@@ -5,10 +5,11 @@ import Work from '../sections/Work';
 import LetsTalk from '../sections/LetsTalk';
 import Impressum from '../sections/Impressum';
 import Datenschutz from '../sections/Datenschutz';
+import AGB from '../sections/AGB';
 import { leistungenData } from '../../data/leistungen';
 import { workData } from '../../data/work';
 
-type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz';
+type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz' | 'agb';
 
 interface PageRouterProps {
   currentPage: Page;
@@ -70,13 +71,17 @@ const PageRouter: React.FC<PageRouterProps> = ({ currentPage, onPageChange }) =>
     }
   }, [onPageChange]);
 
-  // Für Impressum und Datenschutz: separate Seiten
+  // Für Impressum, Datenschutz und AGB: separate Seiten
   if (currentPage === 'impressum') {
     return <Impressum />;
   }
 
   if (currentPage === 'datenschutz') {
     return <Datenschutz />;
+  }
+
+  if (currentPage === 'agb') {
+    return <AGB />;
   }
 
   // Alle anderen Sektionen auf einer scrollbaren Seite
