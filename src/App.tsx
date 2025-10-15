@@ -3,7 +3,7 @@ import Layout from './components/layout/Layout';
 import PageRouter from './components/layout/PageRouter';
 import CookieBanner from './components/ui/CookieBanner';
 
-type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz';
+type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz' | 'agb';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');

@@ -2,7 +2,7 @@ import React from 'react';
 import { Linkedin, Github } from 'lucide-react';
 import { LEGAL_ITEMS } from '../../utils/constants';
 
-type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz';
+type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz' | 'agb';
 
 interface FooterProps {
   onPageChange?: (page: Page) => void;

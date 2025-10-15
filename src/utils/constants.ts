@@ -9,6 +9,7 @@ export const NAV_ITEMS = [
 export const LEGAL_ITEMS = [
   { id: 'impressum', label: 'Impressum' },
   { id: 'datenschutz', label: 'Datenschutz' },
+  { id: 'agb', label: 'AGB' },
 ];
 
 // Contact Information

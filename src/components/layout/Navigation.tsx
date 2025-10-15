@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NAV_ITEMS } from '../../utils/constants';
 
-type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz';
+type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz' | 'agb';
 
 interface NavigationProps {
   currentPage?: Page;
@@ -12,8 +12,8 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavClick = (page: Page) => {
-    // Für Impressum und Datenschutz: Seite wechseln
-    if (page === 'impressum' || page === 'datenschutz') {
+    // Für Impressum, Datenschutz und AGB: Seite wechseln
+    if (page === 'impressum' || page === 'datenschutz' || page === 'agb') {
       onPageChange?.(page);
     } else {
       // Für alle anderen Sektionen: scrollen
