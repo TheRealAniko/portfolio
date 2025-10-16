@@ -14,7 +14,7 @@ export const LEGAL_ITEMS = [
 
 // Contact Information
 export const CONTACT_INFO = {
-  email: 'hello@aniko.dev',
+  email: 'hello [at] aniko [dot] dev',
   phone: '+49 123 456789',
   address: 'Musterstraße 123, 12345 Musterstadt',
 };

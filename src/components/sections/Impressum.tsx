@@ -23,7 +23,7 @@ const Impressum: React.FC = () => {
             <p>
               <strong>Aniko Juhasz</strong><br />
               Webentwicklerin & Consultant<br />
-              E-Mail: <a href="mailto:hello@aniko.dev" className="text-[var(--color-primary)] hover:underline">hello@aniko.dev</a><br />
+              E-Mail: hello [at] aniko [dot] dev<br />
               Website: <a href="https://aniko.dev" className="text-[var(--color-primary)] hover:underline">https://aniko.dev</a>
             </p>
           </div>
@@ -40,7 +40,7 @@ const Impressum: React.FC = () => {
             <h2 className="text-2xl font-bold mb-4">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
             <p>
               <strong>Aniko Juhasz</strong><br />
-              E-Mail: <a href="mailto:hello@aniko.dev" className="text-[var(--color-primary)] hover:underline">hello@aniko.dev</a>
+              E-Mail: hello [at] aniko [dot] dev
             </p>
           </div>
 

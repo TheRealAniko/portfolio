@@ -73,7 +73,7 @@ const Datenschutz: React.FC = () => {
             </p>
             <p>
               <strong>Aniko Juhasz</strong><br />
-              E-Mail: <a href="mailto:hello@aniko.dev" className="text-[var(--color-primary)] hover:underline">hello@aniko.dev</a>
+              E-Mail: hello [at] aniko [dot] dev
             </p>
             <p>
               Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
@@ -111,7 +111,7 @@ const Datenschutz: React.FC = () => {
             </p>
             <p>
               <strong>Aniko Juhasz</strong><br />
-              E-Mail: <a href="mailto:hello@aniko.dev" className="text-[var(--color-primary)] hover:underline">hello@aniko.dev</a>
+              E-Mail: hello [at] aniko [dot] dev
             </p>
           </div>
         </div>
