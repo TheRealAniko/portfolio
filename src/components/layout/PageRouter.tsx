@@ -90,7 +90,7 @@ const PageRouter: React.FC<PageRouterProps> = ({ currentPage, onPageChange }) =>
       <section id="home">
         <Hero
           subtitle="Sichtbar werden. Zeit sparen. Wachsen."
-          title={<>Ich entwickle <span className="underlined ">Websites</span> und <span className="underlined">Automatisierungen</span> für Sichtbarkeit und Effizienz. Klar im Design.</>}
+          title={<><span className="underlined ">Websites</span> und <span className="underlined">Automatisierungen</span> für Sichtbarkeit und Effizienz. Klar im Design.</>}
           ctaText="Leistungen ansehen"
           onCtaClick={handleHeroCtaClick}
         />

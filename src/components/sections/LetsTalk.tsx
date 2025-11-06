@@ -63,7 +63,7 @@ const LetsTalk: React.FC = () => {
             Let's Talk
           </h2>
           <p className="text-lg sm:text-xl opacity-90 max-w-3xl mx-auto">
-          Lust, gemeinsam was zu starten? Ich freue mich über spannende Projekte, Kooperationen oder eine einfache Nachricht.
+          Lust, gemeinsam zu starten? Projekte, Kooperationen oder eine kurze Nachricht sind willkommen.
           </p>
         </div>
         
