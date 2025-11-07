@@ -8,6 +8,7 @@ import Datenschutz from '../sections/Datenschutz';
 import AGB from '../sections/AGB';
 import { leistungenData } from '../../data/leistungen';
 import { workData } from '../../data/work';
+import { trackEvent, trackPageView } from '../../utils/analytics';
 
 type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz' | 'agb';
 
@@ -18,6 +19,7 @@ interface PageRouterProps {
 
 const PageRouter: React.FC<PageRouterProps> = ({ currentPage, onPageChange }) => {
   const handleLeistungenCtaClick = () => {
+    trackEvent("cta_click", {cta_location: "leistungen", cta_text: "Lets Talk"});
     // Scroll zu lets-talk Sektion
     const element = document.getElementById('lets-talk');
     if (element) {
@@ -26,6 +28,7 @@ const PageRouter: React.FC<PageRouterProps> = ({ currentPage, onPageChange }) =>
   };
 
   const handleHeroCtaClick = () => {
+    trackEvent("cta_click", {cta_location: "hero", cta_text: "Leistungen ansehen"});
     // Scroll zu leistungen Sektion
     const element = document.getElementById('leistungen');
     if (element) {
@@ -37,11 +40,13 @@ const PageRouter: React.FC<PageRouterProps> = ({ currentPage, onPageChange }) =>
   useEffect(() => {
     if (currentPage === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      trackPageView('/');
     } else {
       const element = document.getElementById(currentPage);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
+      trackPageView(`/${currentPage}`);
     }
   }, [currentPage]);
 
