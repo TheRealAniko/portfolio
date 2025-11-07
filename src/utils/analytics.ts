@@ -13,51 +13,56 @@ export const hasAnalyticsConsent = (): boolean => {
     return consent === "accepted";
 };
 
-// GA-Script dynamisch laden
+// GA4 nach Google's offiziellem Standard laden
 export const loadGA4 = (): void => {
     if (typeof window === "undefined" || !hasAnalyticsConsent()) {
         return;
     }
 
-    // Prüfen, ob GA4 konfiguriert ist
     if (!isGA4Configured()) {
-        console.warn("GA4 Measurement ID ist nicht konfiguriert. Bitte VITE_GA4_MEASUREMENT_ID in .env setzen.");
+        console.warn("GA4 Measurement ID ist nicht konfiguriert.");
         return;
     }
 
-    // Wenn gtag bereits existiert, nur Config neu setzen
-    if (window.gtag) {
-        window.gtag('config', GA4_MEASUREMENT_ID, {
-            anonymize_ip: true,
-            allow_google_signals: false,
-            allow_ad_personalization_signals: false,
-            cookie_flags: "SameSite=None; Secure",
-        });
+    // Prüfen, ob bereits geladen (verhindert doppeltes Laden)
+    if (document.querySelector(`script[src*="googletagmanager.com/gtag/js"]`)) {
+        // Bereits geladen, nur Config aktualisieren
+        if (window.gtag) {
+            window.gtag('config', GA4_MEASUREMENT_ID, {
+                anonymize_ip: true,
+                allow_google_signals: false,
+                allow_ad_personalization_signals: false,
+            });
+        }
         return;
     }
 
-    // Script-Tag zum Head hinzufügen
-    const script1 = document.createElement("script");
-    script1.async = true;
-    script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`;
-    document.head.appendChild(script1);
-
-    // gtag.js initialisieren
+    // Google's offizieller Standard - Schritt für Schritt:
+    
+    // 1. dataLayer initialisieren
     window.dataLayer = window.dataLayer || [];
-    const dataLayer = window.dataLayer;
-    function gtag(...args: any[]) {
-        dataLayer.push(args);
+    
+    // 2. gtag-Funktion definieren (genau wie Google es will)
+    function gtag() {
+        window.dataLayer!.push(arguments);
     }
     window.gtag = gtag;
 
-    // GA4 Konfiguration
-    gtag('js', new Date());
-    gtag('config', GA4_MEASUREMENT_ID, {
+    // 3. gtag('js', new Date()) aufrufen
+    window.gtag('js', new Date());
+
+    // 4. gtag('config', MEASUREMENT_ID) aufrufen
+    window.gtag('config', GA4_MEASUREMENT_ID, {
         anonymize_ip: true,
         allow_google_signals: false,
         allow_ad_personalization_signals: false,
-        cookie_flags: "SameSite=None; Secure",
     });
+
+    // 5. Script-Tag erstellen und laden (genau wie Google es will)
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
 };
 
 // GA4 entfernen, wenn der User Cookies ablehnt
@@ -70,12 +75,11 @@ export const removeGA4 = (): void => {
 
     // dataLayer leeren
     if (window.dataLayer) {
-        window.dataLayer = [];
+        window.dataLayer.length = 0;
     }
 
-    // gtag.js entfernen
+    // gtag entfernen
     delete window.gtag;
-    delete window.dataLayer;
 };
 
 // Hilfsfunktion für Page Views
