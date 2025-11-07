@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from './components/layout/Layout';
 import PageRouter from './components/layout/PageRouter';
 import CookieBanner from './components/ui/CookieBanner';
+import { loadGA4 } from './utils/analytics';
 
 type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz' | 'agb';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
+
+  // GA4 laden, wenn bereits Cookies akzeptiert wurden
+  useEffect(() => {
+    loadGA4();
+  }, []);
 
   const handlePageChange = (page: Page) => {
     setCurrentPage(page);

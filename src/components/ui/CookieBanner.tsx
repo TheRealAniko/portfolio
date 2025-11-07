@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from './Button';
+import { loadGA4, removeGA4 } from '../../utils/analytics';
 
 interface CookieBannerProps {
   onAccept?: () => void;
@@ -20,12 +21,14 @@ const CookieBanner: React.FC<CookieBannerProps> = ({ onAccept, onDecline }) => {
   const handleAccept = () => {
     localStorage.setItem('cookieConsent', 'accepted');
     setIsVisible(false);
+    loadGA4(); // GA4 laden, wenn Cookies akzeptiert werden
     onAccept?.();
   };
 
   const handleDecline = () => {
     localStorage.setItem('cookieConsent', 'declined');
     setIsVisible(false);
+    removeGA4(); // GA4 entfernen, wenn Cookies abgelehnt werden
     onDecline?.();
   };
 
