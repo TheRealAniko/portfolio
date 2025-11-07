@@ -21,12 +21,18 @@ export const loadGA4 = (): void => {
 
     // Prüfen, ob GA4 konfiguriert ist
     if (!isGA4Configured()) {
-        console.warn("GA4 Measurement ID ist nicht konfiguriert");
+        console.warn("GA4 Measurement ID ist nicht konfiguriert. Bitte VITE_GA4_MEASUREMENT_ID in .env setzen.");
         return;
     }
 
-    // Prüfen, ob das GA-Script bereits geladen ist
+    // Wenn gtag bereits existiert, nur Config neu setzen
     if (window.gtag) {
+        window.gtag('config', GA4_MEASUREMENT_ID, {
+            anonymize_ip: true,
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false,
+            cookie_flags: "SameSite=None; Secure",
+        });
         return;
     }
 
@@ -47,12 +53,9 @@ export const loadGA4 = (): void => {
     // GA4 Konfiguration
     gtag('js', new Date());
     gtag('config', GA4_MEASUREMENT_ID, {
-        // IP-Anonymisierung aktivieren (DSGVO-konform)
         anonymize_ip: true,
-        // Keine Datenweitergabe an Google
         allow_google_signals: false,
         allow_ad_personalization_signals: false,
-        // Cookie-Einstellungen
         cookie_flags: "SameSite=None; Secure",
     });
 };
