@@ -1,6 +1,7 @@
 import React from 'react';
-import { Linkedin, Github } from 'lucide-react';
+import { Linkedin, Github, Cookie } from 'lucide-react';
 import { LEGAL_ITEMS } from '../../utils/constants';
+import { removeGA4 } from '../../utils/analytics';
 
 type Page = 'home' | 'leistungen' | 'work' | 'lets-talk' | 'impressum' | 'datenschutz' | 'agb';
 
@@ -41,6 +42,26 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
           
           {/* Social Icons */}
           <div className="flex items-center space-x-4">
+          <div className="relative group">
+  <button
+    aria-label="Cookie-Einstellungen ändern"
+    title="Cookie-Einstellungen ändern"
+    onClick={() => {
+    localStorage.removeItem("cookieConsent");
+    removeGA4(); // GA sofort deaktivieren
+    window.location.reload(); // Banner erscheint neu
+  }}
+    className="text-black hover:text-[var(--color-primary)] flex items-center gap-2"
+  >
+    <Cookie size={20} />
+  </button>
+  <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2
+                   text-xs bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100
+                   transition-opacity">
+    Cookies entfernen
+  </span>
+</div>
+
             <a
               href="https://www.linkedin.com/in/anikojuhasz/"
               target="_blank"
